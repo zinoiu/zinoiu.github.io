@@ -6,21 +6,22 @@
 <title>Einjhel Romanillos — Developer and aspiring cybersecurity analyst</title>
 <meta name="description" content="Einjhel Romanillos builds apps, games, and sites with React, Express, Python, and Java, and is working toward a career in cybersecurity.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Hanken+Grotesk:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#ffffff; --ink:#26203a; --muted:#6e6783; --line:#ece4f8; --card:#faf7ff; --accent:#cdb6f7; --accent-ink:#2a1a4d; --link:#6d3fc7;
+  --bg:#ffffff; --ink:#26203a; --muted:#6e6783; --line:#ece4f8; --card:#faf7ff; --accent:#cdb6f7; --accent-ink:#2a1a4d; --link:#6d3fc7; --ok:#2e9d5b;
   --display:"Bricolage Grotesque","Hanken Grotesk",system-ui,sans-serif;
   --body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"DM Mono",ui-monospace,Menlo,Consolas,monospace;
   box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
   color-scheme:light;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px);background:#ffffff}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 clamp(1rem,.94rem + .3vw,1.125rem)/1.65 var(--body);-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 clamp(1rem,.94rem + .3vw,1.125rem)/1.65 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:4px}
-.wrap{max-width:1040px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:6}
 header.top .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px 18px;min-height:60px;padding-top:8px;padding-bottom:8px}
@@ -29,17 +30,36 @@ nav{display:flex;gap:22px;font-size:.95rem}
 nav a{text-decoration:none;color:var(--muted)}
 nav a:hover{color:var(--link)}
 section{padding:clamp(44px,8vw,96px) 0 8px}
-h1{font:700 clamp(2rem,1.1rem + 4.6vw,4.5rem)/1.08 var(--display);letter-spacing:-.02em;margin:0 0 22px;max-width:15em}
 h2{font:700 clamp(1.3rem,1.1rem + 1vw,1.9rem)/1.2 var(--display);margin:0 0 clamp(18px,3vw,32px);letter-spacing:-.01em}
 h3{font:600 1.2rem/1.3 var(--display);margin:0}
 .lede{font-size:clamp(1.05rem,1rem + .5vw,1.3rem);color:var(--muted);max-width:36em;margin:0 0 28px}
-.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .btn{display:inline-block;padding:11px 20px;border-radius:999px;border:1px solid var(--line);text-decoration:none;font-weight:600;font-size:.95rem}
 .btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 .btn:hover{border-color:var(--accent)}
-.hero{padding-top:clamp(48px,9vw,110px)}
-.hero-grid{display:grid;grid-template-columns:1fr;gap:36px}
-@media(min-width:800px){.hero-grid{grid-template-columns:1fr minmax(200px,260px);align-items:end}}
+
+/* Hero */
+.hero{padding-top:clamp(36px,6vw,72px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:48px}
+@media(min-width:860px){.hero-grid{grid-template-columns:minmax(0,1fr) 340px;gap:56px;align-items:center}}
+.status{display:flex;align-items:center;gap:10px;margin:0 0 20px;font:400 .8rem/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.dot{flex:none;width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(46,157,91,.18)}
+h1{font:700 clamp(2.8rem,1rem + 8vw,6.2rem)/.98 var(--display);letter-spacing:-.04em;margin:0 0 24px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats div{padding:20px 16px 18px;border-left:1px solid var(--line)}
+.stats div:first-child{border-left:0;padding-left:0}
+.stats dt{font:700 clamp(1.8rem,1.2rem + 2vw,2.6rem)/1 var(--display);margin:0 0 10px}
+.stats dd{margin:0;font:400 .72rem/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.textlink{font:500 .85rem var(--mono);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px;margin-left:10px}
+.textlink:hover{color:var(--link);border-color:var(--link)}
+.photo{margin:0;position:relative;width:100%;max-width:340px}
+.frame{background:var(--card);border:1px solid var(--line);padding:14px}
+.pic{position:relative;aspect-ratio:4/5;background:var(--accent);display:grid;place-items:center;overflow:hidden}
+.pic span{font:700 4rem var(--display);color:var(--accent-ink);opacity:.45}
+.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;right:8px;bottom:-14px;display:flex;align-items:center;gap:9px;background:var(--bg);border:1px solid var(--line);padding:8px 14px;font:400 .7rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+
+/* Game */
 .game{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:16px;width:100%;max-width:260px}
 .game p{margin:0 0 10px;font-size:.9rem;color:var(--muted)}
 .board{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
@@ -47,6 +67,8 @@ h3{font:600 1.2rem/1.3 var(--display);margin:0}
 .cell:hover:not(:disabled){border-color:var(--accent)}
 .cell.win{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 .game button.reset{margin-top:10px;background:none;border:0;color:var(--link);font:600 .9rem var(--body);cursor:pointer;padding:0;text-decoration:underline}
+
+/* Projects and the rest */
 .proj{display:grid;gap:6px;padding:26px 0;border-top:1px solid var(--line)}
 .proj:last-child{border-bottom:1px solid var(--line)}
 .proj .stack{color:var(--muted);font-size:.92rem}
@@ -65,7 +87,7 @@ ul.plain a:hover{text-decoration-color:var(--link)}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
 .chips li{padding:6px 14px;border:1px solid var(--line);background:var(--card);border-radius:999px;font-size:.95rem}
 footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:.92rem}
-@media(max-width:560px){nav{gap:14px;font-size:.88rem}.btn{flex:1 1 100%;text-align:center}}
+@media(max-width:560px){nav{gap:14px;font-size:.88rem}.btn{flex:1 1 100%;text-align:center}.textlink{margin-left:0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
@@ -78,15 +100,23 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
 <main id="top">
 <section class="hero"><div class="wrap hero-grid">
   <div>
-    <h1>I build apps, games, and sites, and I’m learning to secure them.</h1>
-    <p class="lede">I’m Einjhel, an aspiring cybersecurity analyst. I build with React, Express, Python, Java, and Kotlin, and I work on team projects that ship.</p>
-    <div class="btns"><a class="btn primary" href="#projects">See my projects</a><a class="btn" href="https://github.com/zinoiu">View GitHub</a></div>
+    <p class="status"><span class="dot"></span>Aspiring cybersecurity analyst · Web developer</p>
+    <h1>Einjhel Romanillos</h1>
+    <p class="lede">I build apps, games, and sites with React, Express, Python, and Java, and I’m learning to secure them.</p>
+    <dl class="stats">
+      <div><dt>5</dt><dd>Projects<br>built</dd></div>
+      <div><dt>4</dt><dd>Cisco<br>certificates</dd></div>
+      <div><dt>3</dt><dd>Team<br>projects</dd></div>
+    </dl>
+    <div class="btns">
+      <a class="btn primary" href="mailto:youremail@gmail.com">Get in touch ↗</a>
+      <a class="textlink" href="cv.pdf" download>Download CV ↓</a>
+    </div>
   </div>
-  <div class="game" aria-label="Tic-Tac-Toe">
-    <p id="status">X’s turn</p>
-    <div class="board" id="board"></div>
-    <button class="reset" id="reset" type="button">New game</button>
-  </div>
+  <figure class="photo">
+    <div class="frame"><div class="pic"><span aria-hidden="true">ER</span><img src="photo.jpg" alt="Portrait of Einjhel Romanillos" onerror="this.remove()"></div></div>
+    <figcaption class="badge"><span class="dot"></span>Open to opportunities</figcaption>
+  </figure>
 </div></section>
 
 <section id="projects"><div class="wrap">
@@ -152,6 +182,15 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
 <section id="stack"><div class="wrap">
   <h2>Core stack</h2>
   <ul class="chips"><li>React</li><li>Express</li><li>MongoDB</li><li>Python</li><li>Java</li><li>Kotlin</li><li>Firebase</li><li>Tailwind</li><li>HTML/CSS</li></ul>
+</div></section>
+
+<section id="play"><div class="wrap">
+  <h2>Take a break</h2>
+  <div class="game" aria-label="Tic-Tac-Toe">
+    <p id="status">X’s turn</p>
+    <div class="board" id="board"></div>
+    <button class="reset" id="reset" type="button">New game</button>
+  </div>
 </div></section>
 
 <section id="about"><div class="wrap">
