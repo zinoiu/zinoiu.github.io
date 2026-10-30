@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f5effe; --ink:#2a1c42; --muted:#6f6385; --line:#e4d6fb; --card:#fcf9ff; --accent:#b072ff; --accent-ink:#240a4a; --link:#7a2fe0;
+  --bg:#ffffff; --ink:#26203a; --muted:#6e6783; --line:#ece4f8; --card:#faf7ff; --accent:#cdb6f7; --accent-ink:#2a1a4d; --link:#6d3fc7;
   --display:"Bricolage Grotesque","Hanken Grotesk",system-ui,sans-serif;
   --body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
   box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
@@ -23,7 +23,7 @@
 html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 clamp(1rem,.94rem + .3vw,1.125rem)/1.65 var(--body);-webkit-font-smoothing:antialiased}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:4px}
 .wrap{max-width:1040px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:6}
@@ -31,7 +31,7 @@ header.top .wrap{display:flex;justify-content:space-between;align-items:center;f
 .brand{font:700 1.05rem var(--display);text-decoration:none}
 nav{display:flex;gap:22px;font-size:.95rem}
 nav a{text-decoration:none;color:var(--muted)}
-nav a:hover{color:var(--ink)}
+nav a:hover{color:var(--link)}
 section{padding:clamp(44px,8vw,96px) 0 8px}
 h1{font:700 clamp(2rem,1.1rem + 4.6vw,4.5rem)/1.08 var(--display);letter-spacing:-.02em;margin:0 0 22px;max-width:15em}
 h2{font:700 clamp(1.3rem,1.1rem + 1vw,1.9rem)/1.2 var(--display);margin:0 0 clamp(18px,3vw,32px);letter-spacing:-.01em}
@@ -57,15 +57,15 @@ h3{font:600 1.2rem/1.3 var(--display);margin:0}
 .proj p{margin:6px 0 4px;max-width:40em}
 .proj a.src{font-weight:600;color:var(--link);width:max-content}
 .proj-head{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}
-.tag{font-size:.82rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:1px 10px}
+.tag{font-size:.82rem;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:1px 10px}
 .two{display:grid;gap:28px}
 @media(min-width:700px){.two{grid-template-columns:1fr 1fr}}
 .two h3{margin-bottom:8px}
 .two p,.two li{color:var(--muted)}
 ul.plain{margin:0;padding:0;list-style:none}
 ul.plain li{padding:4px 0}
-ul.plain a{color:var(--ink);text-decoration-color:var(--line);text-underline-offset:3px}
-ul.plain a:hover{text-decoration-color:var(--accent)}
+ul.plain a{color:var(--ink);text-decoration-color:var(--accent);text-underline-offset:3px}
+ul.plain a:hover{text-decoration-color:var(--link)}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
 .chips li{padding:6px 14px;border:1px solid var(--line);background:var(--card);border-radius:999px;font-size:.95rem}
 footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:.92rem}
