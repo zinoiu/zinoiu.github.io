@@ -2,7 +2,234 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Einjhel Romanillos — Developer and aspiring cybersecurity analyst</title>
+<meta name="description" content="Einjhel Romanillos builds apps, games, and sites with React, Express, Python, and Java, and is working toward a career in cybersecurity.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Hanken+Grotesk:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --ink:#26203a; --muted:#6e6783; --line:#ece4f8; --card:#faf7ff; --accent:#cdb6f7; --accent-ink:#2a1a4d; --link:#6d3fc7; --ok:#2e9d5b;
+  --display:"Bricolage Grotesque","Hanken Grotesk",system-ui,sans-serif;
+  --body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"DM Mono",ui-monospace,Menlo,Consolas,monospace;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px);background:#ffffff}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 clamp(1rem,.94rem + .3vw,1.125rem)/1.65 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:6}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px 18px;min-height:60px;padding-top:8px;padding-bottom:8px}
+.brand{font:700 1.05rem var(--display);text-decoration:none}
+nav{display:flex;gap:22px;font-size:.95rem}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--link)}
+section{padding:clamp(44px,8vw,96px) 0 8px}
+h2{font:700 clamp(1.3rem,1.1rem + 1vw,1.9rem)/1.2 var(--display);margin:0 0 clamp(18px,3vw,32px);letter-spacing:-.01em}
+h3{font:600 1.2rem/1.3 var(--display);margin:0}
+.lede{font-size:clamp(1.05rem,1rem + .5vw,1.3rem);color:var(--muted);max-width:36em;margin:0 0 28px}
+.note{margin:-14px 0 22px;color:var(--muted);font-size:.95rem}
+.btns{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-block;padding:11px 20px;border-radius:999px;border:1px solid var(--line);text-decoration:none;font-weight:600;font-size:.95rem}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn:hover{border-color:var(--accent)}
+
+/* Hero */
+.hero{padding-top:clamp(36px,6vw,72px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:48px}
+@media(min-width:860px){.hero-grid{grid-template-columns:minmax(0,1fr) 300px;gap:56px;align-items:center}}
+.status{display:flex;align-items:center;gap:10px;margin:0 0 20px;font:400 .8rem/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.dot{flex:none;width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(46,157,91,.18)}
+h1{font:700 clamp(2.8rem,1rem + 8vw,6.2rem)/.98 var(--display);letter-spacing:-.04em;margin:0 0 24px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats div{padding:20px 16px 18px;border-left:1px solid var(--line)}
+.stats div:first-child{border-left:0;padding-left:0}
+.stats dt{font:700 clamp(1.8rem,1.2rem + 2vw,2.6rem)/1 var(--display);margin:0 0 10px}
+.stats dd{margin:0;font:400 .72rem/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.textlink{font:500 .85rem var(--mono);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px;margin-left:10px}
+.textlink:hover{color:var(--link);border-color:var(--link)}
+.photo{margin:0;position:relative;width:100%;max-width:300px}
+.frame{background:var(--card);border:1px solid var(--line);padding:12px}
+.pic{position:relative;aspect-ratio:4/5;background:var(--accent);display:grid;place-items:center;overflow:hidden}
+.pic span{font:700 3.4rem var(--display);color:var(--accent-ink);opacity:.45}
+.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+@media(max-width:859px){.photo{max-width:260px}}
+
+/* Game */
+.game{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:16px;width:100%;max-width:260px}
+.game p{margin:0 0 10px;font-size:.9rem;color:var(--muted)}
+.board{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.cell{aspect-ratio:1;border:1px solid var(--line);background:var(--bg);border-radius:8px;font:700 1.6rem var(--display);color:var(--ink);cursor:pointer}
+.cell:hover:not(:disabled){border-color:var(--accent)}
+.cell.win{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.game button.reset{margin-top:10px;background:none;border:0;color:var(--link);font:600 .9rem var(--body);cursor:pointer;padding:0;text-decoration:underline}
+
+/* Projects and the rest */
+.proj{display:grid;gap:6px;padding:26px 0;border-top:1px solid var(--line)}
+.proj:last-child{border-bottom:1px solid var(--line)}
+.proj .stack{color:var(--muted);font-size:.92rem}
+.proj p{margin:6px 0 4px;max-width:40em}
+.proj a.src{font-weight:600;color:var(--link);width:max-content}
+.proj-head{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}
+.tag{font-size:.82rem;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:1px 10px}
+.two{display:grid;gap:28px}
+@media(min-width:700px){.two{grid-template-columns:1fr 1fr}}
+.two h3{margin-bottom:8px}
+.two p,.two li{color:var(--muted)}
+ul.plain{margin:0;padding:0;list-style:none}
+ul.plain li{padding:4px 0}
+ul.plain a{color:var(--ink);text-decoration-color:var(--accent);text-underline-offset:3px}
+ul.plain a:hover{text-decoration-color:var(--link)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+.chips li{padding:6px 14px;border:1px solid var(--line);background:var(--card);border-radius:999px;font-size:.95rem}
+footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:.92rem}
+@media(max-width:560px){nav{gap:14px;font-size:.88rem}.btn{flex:1 1 100%;text-align:center}.textlink{margin-left:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#top">Einjhel Romanillos</a>
+  <nav aria-label="Sections"><a href="#projects">Projects</a><a href="#security">Security</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap hero-grid">
+  <div>
+    <p class="status"><span class="dot"></span>Aspiring cybersecurity analyst · Web developer</p>
+    <h1>Einjhel Jam M. Romanillos</h1>
+    <p class="lede">I build apps, games, and sites with React, Express, Python, and Java, and I’m learning to secure them.</p>
+    <dl class="stats">
+      <div><dt>6</dt><dd>Projects<br>built</dd></div>
+      <div><dt>4</dt><dd>Cisco<br>certificates</dd></div>
+      <div><dt>6</dt><dd>Group<br>projects</dd></div>
+    </dl>
+    <div class="btns">
+      <a class="btn primary" href="mailto:romanillos.einjhel@gmail.com">Get in touch ↗</a>
+      <a class="textlink" href="cv.pdf" download>Download CV ↓</a>
+    </div>
+  </div>
+  <figure class="photo">
+    <div class="frame"><div class="pic"><span aria-hidden="true">ER</span><img src="photo.jpg" alt="Portrait of Einjhel Romanillos" onerror="this.onerror=function(){this.remove()};this.src='photo.png'"></div></div>
+  </figure>
+</div></section>
+
+<section id="projects"><div class="wrap">
+  <h2>Selected projects</h2>
+  <p class="note">All of my projects were built as group projects.</p>
+  <article class="proj">
+    <div class="proj-head"><h3>Upang Delivers</h3><span class="tag">Group project</span></div>
+    <span class="stack">React, Vite, Tailwind, Express, MongoDB</span>
+    <p>An errand and delivery platform for PHINMA University of Pangasinan, built around campus micro-gigs. Student and admin screens in React, with an Express and MongoDB backend that handles accounts with JWT sign-in and input validation.</p>
+    <a class="src" href="https://github.com/zinoiu/Upang-Delivers1">Source code</a>
+  </article>
+  <article class="proj">
+    <div class="proj-head"><h3>InvestEd</h3><span class="tag">Group project</span></div>
+    <span class="stack">Kotlin, Firebase</span>
+    <p>A budgeting and investing app for students that helps them manage their money and learn to invest.</p>
+    <a class="src" href="https://github.com/zinoiu/InvestEd0">Source code</a>
+  </article>
+  <article class="proj">
+    <div class="proj-head"><h3>Rows of Victory</h3><span class="tag">Group project</span></div>
+    <span class="stack">Java Swing</span>
+    <p>A Tic-Tac-Toe-inspired game that trains planning and pattern spotting. Play a friend or a computer opponent at three difficulty levels, and each player keeps only their three latest marks.</p>
+    <a class="src" href="https://github.com/zinoiu/RowsOfVictory">Source code</a>
+  </article>
+</div></section>
+
+<section id="more"><div class="wrap">
+  <h2>More work</h2>
+  <article class="proj">
+    <div class="proj-head"><h3>Translate Go</h3><span class="tag">Group project</span></div>
+    <span class="stack">Python, customtkinter</span>
+    <p>A desktop app that translates typed or spoken text between languages, for travel, practice, or chatting across languages.</p>
+    <a class="src" href="https://github.com/zinoiu/Python-Project">Source code</a>
+  </article>
+  <article class="proj">
+    <div class="proj-head"><h3>Elemental Elegance</h3><span class="tag">Group project</span></div>
+    <span class="stack">HTML, CSS, JavaScript</span>
+    <p>An art gallery site about famous painters, with 15 searchable artworks and a pop-up of details for each one.</p>
+    <a class="src" href="https://github.com/zinoiu/Elemental-Elegance">Source code</a>
+  </article>
+</div></section>
+
+<section id="security"><div class="wrap">
+  <h2>Security</h2>
+  <div class="two">
+    <div>
+      <h3>Courses and certificates</h3>
+      <p>Cisco Networking Academy completion certificates.</p>
+      <ul class="plain">
+        <li><a href="https://www.credly.com/badges/07dd1f50-d8ec-44b5-a7c4-17d70ff44cff/public_url">Introduction to Cybersecurity</a></li>
+        <li><a href="https://www.credly.com/badges/408a68bb-9b50-4d10-a1ee-2f53bd50a9b6/public_url">Python Essentials 1</a></li>
+        <li><a href="https://www.credly.com/badges/d9b56d47-ef02-946f-8e980a5bd682/public_url">Python Essentials 2</a></li>
+        <li><a href="https://www.credly.com/badges/f46ef8a2-6b0d-4908-916c-2281e3cface7/public_url">HTML Essentials</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Secure web development</h3>
+      <p>On Upang Delivers I worked as a developer on hashed passwords, JWT sign-in, input validation, and role-based access.</p>
+      <h3 style="margin-top:22px">Currently learning</h3>
+      <p>Networking fundamentals, the Linux command line, and hands-on security practice.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="stack"><div class="wrap">
+  <h2>Core stack</h2>
+  <ul class="chips"><li>React</li><li>Express</li><li>MongoDB</li><li>Python</li><li>Java</li><li>Kotlin</li><li>Firebase</li><li>Tailwind</li><li>HTML/CSS</li></ul>
+</div></section>
+
+<section id="play"><div class="wrap">
+  <h2>Take a break</h2>
+  <div class="game" aria-label="Tic-Tac-Toe">
+    <p id="status">X’s turn</p>
+    <div class="board" id="board"></div>
+    <button class="reset" id="reset" type="button">New game</button>
+  </div>
+</div></section>
+
+<section id="about"><div class="wrap">
+  <h2>About</h2>
+  <p style="max-width:40em">I’ve worked on group projects like Upang Delivers and InvestEd, and each one taught me something the last one didn’t. I’m working toward a career in cybersecurity, writing cleaner code, documenting what I build, and shipping projects other people can run.</p>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <h2>Contact</h2>
+  <p class="lede" style="margin-bottom:20px">If you’re hiring, want to collaborate, or have feedback on my code, I’d like to hear from you.</p>
+  <div class="btns"><a class="btn primary" href="mailto:romanillos.einjhel@gmail.com">Email me</a><a class="btn" href="https://www.linkedin.com/in/romanillos-einjhel">LinkedIn</a><a class="btn" href="https://github.com/zinoiu">GitHub</a></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Einjhel Romanillos</div></footer>
+
+<script>
+(function(){
+  var b=document.getElementById('board'),s=document.getElementById('status'),r=document.getElementById('reset');
+  var L=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]],g,t,done,cells=[];
+  for(var i=0;i<9;i++){(function(i){var c=document.createElement('button');c.type='button';c.className='cell';c.setAttribute('aria-label','Square '+(i+1));c.onclick=function(){play(i)};b.appendChild(c);cells.push(c)})(i)}
+  function reset(){g=Array(9).fill('');t='X';done=false;cells.forEach(function(c){c.textContent='';c.disabled=false;c.className='cell'});s.textContent='X’s turn'}
+  function play(i){
+    if(done||g[i])return;
+    g[i]=t;cells[i].textContent=t;cells[i].disabled=true;
+    for(var k=0;k<L.length;k++){var a=L[k];if(g[a[0]]&&g[a[0]]===g[a[1]]&&g[a[1]]===g[a[2]]){a.forEach(function(j){cells[j].classList.add('win')});s.textContent=t+' wins';done=true;return}}
+    if(g.every(Boolean)){s.textContent='Draw';done=true;return}
+    t=t==='X'?'O':'X';s.textContent=t+'’s turn';
+  }
+  r.onclick=reset;reset();
+})();
+</script>
+</body>
+</html>
 <title>Einjhel Romanillos — Developer and aspiring cybersecurity analyst</title>
 <meta name="description" content="Einjhel Romanillos builds apps, games, and sites with React, Express, Python, and Java, and is working toward a career in cybersecurity.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
