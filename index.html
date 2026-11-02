@@ -76,6 +76,11 @@ a.cert:hover{border-color:var(--accent)}
 .cert .no{padding-top:8px;font:400 .68rem/1.5 var(--mono);letter-spacing:.03em;color:var(--muted);overflow-wrap:anywhere}
 .cert .no b{display:block;font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
 
+/* Credly badge embeds */
+.badges-title{margin-top:44px}
+.badges{display:flex;flex-wrap:wrap;gap:18px;margin-top:16px}
+.badges > div{max-width:100%}
+
 /* Game */
 .game{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:16px;width:100%;max-width:260px}
 .game p{margin:0 0 10px;font-size:.9rem;color:var(--muted)}
@@ -219,6 +224,16 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
     <li><a class="cert" href="https://www.credly.com/badges/f46ef8a2-6b0d-4908-916c-2281e3cface7/public_url"><span class="issuer">Cisco Networking Academy</span><strong>HTML Essentials</strong><span class="go">View credential ↗</span></a></li>
     <li><a class="cert" href="https://www.credly.com/badges/3cd79c35-7766-4da1-bcaf-4c209137305f"><span class="issuer">Cisco Networking Academy</span><strong>CSS Essentials</strong><span class="go">View credential ↗</span></a></li>
   </ul>
+
+  <h3 class="badges-title">More badges on Credly</h3>
+  <div class="badges">
+    <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="b48c4cce-8527-4ecf-873b-7a00f586a51a" data-share-badge-host="https://www.credly.com"></div>
+    <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="08cec1df-d837-43b7-9aa0-4ad78d0d287e" data-share-badge-host="https://www.credly.com"></div>
+    <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="968603b8-31c3-4e19-b5fe-61464dd7ddea" data-share-badge-host="https://www.credly.com"></div>
+    <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="68da8eb1-b786-4007-ab5c-38021276719a" data-share-badge-host="https://www.credly.com"></div>
+    <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="e4eb4724-cb3f-4cba-a285-8bc60f57bb04" data-share-badge-host="https://www.credly.com"></div>
+    <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="6ea6620f-b271-4b46-8ddc-a8bb122f85ed" data-share-badge-host="https://www.credly.com"></div>
+  </div>
 </div></section>
 
 <section id="stack"><div class="wrap">
@@ -249,6 +264,7 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
 
 <footer><div class="wrap">Einjhel Romanillos</div></footer>
 
+<script type="text/javascript" async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
 <script>
 (function(){
   var b=document.getElementById('board'),s=document.getElementById('status'),r=document.getElementById('reset');
