@@ -33,7 +33,7 @@ section{padding:clamp(44px,8vw,96px) 0 8px}
 h2{font:700 clamp(1.3rem,1.1rem + 1vw,1.9rem)/1.2 var(--display);margin:0 0 clamp(18px,3vw,32px);letter-spacing:-.01em}
 h3{font:600 1.2rem/1.3 var(--display);margin:0}
 .lede{font-size:clamp(1.05rem,1rem + .5vw,1.3rem);color:var(--muted);max-width:36em;margin:0 0 28px}
-.note{margin:-14px 0 22px;color:var(--muted);font-size:.95rem}
+.note{margin:0 0 18px;color:var(--muted);font-size:.95rem}
 .btns{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .btn{display:inline-block;padding:11px 20px;border-radius:999px;border:1px solid var(--line);text-decoration:none;font-weight:600;font-size:.95rem}
 .btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
@@ -80,6 +80,20 @@ h1{font:700 clamp(2.8rem,1rem + 8vw,6.2rem)/.98 var(--display);letter-spacing:-.
 .hint{position:absolute;left:0;right:0;bottom:0;margin:0;text-align:center;font:400 .7rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);pointer-events:none;transition:opacity .3s}
 @media(max-width:560px){.lanyard{height:570px}}
 
+/* Tabs */
+.tabs{display:flex;justify-content:center;margin:0 0 clamp(24px,4vw,40px)}
+.tablist{display:inline-flex;gap:6px;padding:6px;max-width:100%;overflow-x:auto;scrollbar-width:none;border:1px solid var(--line);background:var(--card);border-radius:18px}
+.tablist::-webkit-scrollbar{display:none}
+.tab{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border:0;border-radius:13px;background:transparent;color:var(--muted);font:600 1rem var(--body);cursor:pointer;white-space:nowrap;transition:background .2s,color .2s,box-shadow .2s}
+.tab svg{width:20px;height:20px;flex:none}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink);box-shadow:0 6px 16px rgba(109,63,199,.2)}
+.panel{animation:panelIn .35s ease backwards}
+.panel[hidden]{display:none}
+@keyframes panelIn{from{opacity:0;transform:translateY(8px)}}
+@media(max-width:560px){.tab{padding:10px 14px;font-size:.92rem}.tab svg{display:none}}
+@media(prefers-reduced-motion:reduce){.panel{animation:none}}
+
 /* Education */
 .edu{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px 24px;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:clamp(18px,3vw,28px)}
 .edu h3{margin-bottom:4px}
@@ -87,7 +101,7 @@ h1{font:700 clamp(2.8rem,1rem + 8vw,6.2rem)/.98 var(--display);letter-spacing:-.
 .pill{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:8px 16px;font:400 .75rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase}
 
 /* Certificate cards */
-.certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:18px 0 0;padding:0;list-style:none}
+.certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:0;padding:0;list-style:none}
 .cert{display:flex;flex-direction:column;gap:4px;height:100%;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:16px;text-decoration:none;transition:border-color .15s}
 a.cert:hover{border-color:var(--accent)}
 .cert .issuer{font:400 .7rem/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
@@ -119,6 +133,9 @@ a.cert:hover{border-color:var(--accent)}
 .game button.reset{margin-top:10px;background:none;border:0;color:var(--link);font:600 .9rem var(--body);cursor:pointer;padding:0;text-decoration:underline}
 
 /* Projects and the rest */
+.sub{margin:0 0 6px}
+.sub + .proj{margin-top:14px}
+.proj-group + .sub{margin-top:44px}
 .proj{display:grid;gap:6px;padding:26px 0;border-top:1px solid var(--line)}
 .proj:last-child{border-bottom:1px solid var(--line)}
 .proj .stack{color:var(--muted);font-size:.92rem}
@@ -140,7 +157,7 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
 <body>
 <header class="top"><div class="wrap">
   <a class="brand" href="#top">Einjhel Romanillos</a>
-  <nav aria-label="Sections"><a href="#projects">Projects</a><a href="#education">Education</a><a href="#security">Security</a><a href="#contact">Contact</a></nav>
+  <nav aria-label="Sections"><a href="#portfolio">Portfolio</a><a href="#education">Education</a><a href="#security">Security</a><a href="#contact">Contact</a></nav>
 </div></header>
 
 <main id="top">
@@ -184,55 +201,119 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
   </div>
 </div></section>
 
-<section id="projects"><div class="wrap">
-  <h2>Selected projects</h2>
-  <p class="note">All of my projects were built as group projects.</p>
-  <article class="proj">
-    <div class="proj-head"><h3>Upang Delivers</h3><span class="tag-pill">Group project</span></div>
-    <span class="stack">React, Vite, Tailwind, Express, MongoDB</span>
-    <p>An errand and delivery platform for PHINMA University of Pangasinan, built around campus micro-gigs. Student and admin screens in React, with an Express and MongoDB backend that handles accounts with JWT sign-in and input validation.</p>
-    <p class="role"><b>My role</b>One of the developers</p>
-    <a class="src" href="https://github.com/zinoiu/Upang-Delivers1">Source code</a>
-  </article>
-  <article class="proj">
-    <div class="proj-head"><h3>ChainLedger</h3><span class="tag-pill">Group project</span></div>
-    <span class="stack">PHP, MySQL, Tailwind CSS, JavaScript</span>
-    <p>An e-wallet transaction monitoring system that helps small businesses record, organize, and analyze their digital transactions. It has a real-time dashboard, a ledger with filtering and sorting, and secure sign-up and login, with sanitized database queries.</p>
-    <p class="role"><b>My role</b>UI/UX and documentation</p>
-    <a class="src" href="https://github.com/zinoiu/ChainLedger1">Source code</a>
-  </article>
-  <article class="proj">
-    <div class="proj-head"><h3>InvestEd</h3><span class="tag-pill">Group project</span></div>
-    <span class="stack">Kotlin, Firebase</span>
-    <p>A budgeting and investing app for students that helps them manage their money and learn to invest.</p>
-    <p class="role"><b>My role</b>One of the developers</p>
-    <a class="src" href="https://github.com/zinoiu/InvestEd0">Source code</a>
-  </article>
-  <article class="proj">
-    <div class="proj-head"><h3>Rows of Victory</h3><span class="tag-pill">Group project</span></div>
-    <span class="stack">Java Swing</span>
-    <p>A Tic-Tac-Toe-inspired game that trains planning and pattern spotting. Play a friend or a computer opponent at three difficulty levels, and each player keeps only their three latest marks.</p>
-    <p class="role"><b>My role</b>Documentation</p>
-    <a class="src" href="https://github.com/zinoiu/RowsOfVictory">Source code</a>
-  </article>
-</div></section>
+<section id="portfolio"><div class="wrap">
+  <h2>Portfolio</h2>
+  <div class="tabs">
+    <div class="tablist" role="tablist" aria-label="Portfolio sections">
+      <button class="tab" role="tab" id="tab-projects" aria-controls="projects" aria-selected="true" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Projects
+      </button>
+      <button class="tab" role="tab" id="tab-certificates" aria-controls="certificates" aria-selected="false" tabindex="-1" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>Certificates
+      </button>
+      <button class="tab" role="tab" id="tab-stack" aria-controls="stack" aria-selected="false" tabindex="-1" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>Tech Stack
+      </button>
+    </div>
+  </div>
 
-<section id="more"><div class="wrap">
-  <h2>More work</h2>
-  <article class="proj">
-    <div class="proj-head"><h3>Translate Go</h3><span class="tag-pill">Group project</span></div>
-    <span class="stack">Python, customtkinter</span>
-    <p>A desktop app that translates typed or spoken text between languages, for travel, practice, or chatting across languages.</p>
-    <p class="role"><b>My role</b>Documentation</p>
-    <a class="src" href="https://github.com/zinoiu/Python-Project">Source code</a>
-  </article>
-  <article class="proj">
-    <div class="proj-head"><h3>Elemental Elegance</h3><span class="tag-pill">Group project</span></div>
-    <span class="stack">HTML, CSS, JavaScript</span>
-    <p>An art gallery site about famous painters, with 15 searchable artworks and a pop-up of details for each one.</p>
-    <p class="role"><b>My role</b>Documentation</p>
-    <a class="src" href="https://github.com/zinoiu/Elemental-Elegance">Source code</a>
-  </article>
+  <!-- Projects tab -->
+  <div class="panel" role="tabpanel" id="projects" aria-labelledby="tab-projects">
+    <p class="note">All of my projects were built as group projects.</p>
+    <h3 class="sub">Selected projects</h3>
+    <div class="proj-group">
+      <article class="proj">
+        <div class="proj-head"><h3>Upang Delivers</h3><span class="tag-pill">Group project</span></div>
+        <span class="stack">React, Vite, Tailwind, Express, MongoDB</span>
+        <p>An errand and delivery platform for PHINMA University of Pangasinan, built around campus micro-gigs. Student and admin screens in React, with an Express and MongoDB backend that handles accounts with JWT sign-in and input validation.</p>
+        <p class="role"><b>My role</b>One of the developers</p>
+        <a class="src" href="https://github.com/zinoiu/Upang-Delivers1">Source code</a>
+      </article>
+      <article class="proj">
+        <div class="proj-head"><h3>ChainLedger</h3><span class="tag-pill">Group project</span></div>
+        <span class="stack">PHP, MySQL, Tailwind CSS, JavaScript</span>
+        <p>An e-wallet transaction monitoring system that helps small businesses record, organize, and analyze their digital transactions. It has a real-time dashboard, a ledger with filtering and sorting, and secure sign-up and login, with sanitized database queries.</p>
+        <p class="role"><b>My role</b>UI/UX and documentation</p>
+        <a class="src" href="https://github.com/zinoiu/ChainLedger1">Source code</a>
+      </article>
+      <article class="proj">
+        <div class="proj-head"><h3>InvestEd</h3><span class="tag-pill">Group project</span></div>
+        <span class="stack">Kotlin, Firebase</span>
+        <p>A budgeting and investing app for students that helps them manage their money and learn to invest.</p>
+        <p class="role"><b>My role</b>One of the developers</p>
+        <a class="src" href="https://github.com/zinoiu/InvestEd0">Source code</a>
+      </article>
+      <article class="proj">
+        <div class="proj-head"><h3>Rows of Victory</h3><span class="tag-pill">Group project</span></div>
+        <span class="stack">Java Swing</span>
+        <p>A Tic-Tac-Toe-inspired game that trains planning and pattern spotting. Play a friend or a computer opponent at three difficulty levels, and each player keeps only their three latest marks.</p>
+        <p class="role"><b>My role</b>Documentation</p>
+        <a class="src" href="https://github.com/zinoiu/RowsOfVictory">Source code</a>
+      </article>
+    </div>
+    <h3 class="sub">More work</h3>
+    <div class="proj-group">
+      <article class="proj">
+        <div class="proj-head"><h3>Translate Go</h3><span class="tag-pill">Group project</span></div>
+        <span class="stack">Python, customtkinter</span>
+        <p>A desktop app that translates typed or spoken text between languages, for travel, practice, or chatting across languages.</p>
+        <p class="role"><b>My role</b>Documentation</p>
+        <a class="src" href="https://github.com/zinoiu/Python-Project">Source code</a>
+      </article>
+      <article class="proj">
+        <div class="proj-head"><h3>Elemental Elegance</h3><span class="tag-pill">Group project</span></div>
+        <span class="stack">HTML, CSS, JavaScript</span>
+        <p>An art gallery site about famous painters, with 15 searchable artworks and a pop-up of details for each one.</p>
+        <p class="role"><b>My role</b>Documentation</p>
+        <a class="src" href="https://github.com/zinoiu/Elemental-Elegance">Source code</a>
+      </article>
+    </div>
+  </div>
+
+  <!-- Certificates tab -->
+  <div class="panel" role="tabpanel" id="certificates" aria-labelledby="tab-certificates" hidden>
+    <p class="note">Cybersecurity, networking, and programming certificates from Appkademiya, Fortinet, and Cisco.</p>
+    <ul class="certs">
+      <li><a class="cert" href="https://appkademiya.online/verify/CERT-CCP-CYBERSECURITY-PROFESSIONAL-20261019-CDA29C086360"><span class="issuer">Appkademiya</span><strong>Certified Cybersecurity Professional</strong><span class="no"><b>Certificate no.</b>CERT-CCP-CYBERSECURITY-PROFESSIONAL-20261019-CDA29C086360</span><span class="go">Verify credential ↗</span></a></li>
+      <li><a class="cert" href="https://www.credly.com/earner/earned/badge/b48c4cce-8527-4ecf-873b-7a00f586a51a"><span class="issuer">Fortinet</span><strong>Fortinet NSE 1 Certified in Cybersecurity</strong><span class="go">View credential ↗</span></a></li>
+      <li><a class="cert" href="https://www.credly.com/earner/earned/badge/08cec1df-d837-43b7-9aa0-4ad78d0d287e"><span class="issuer">Fortinet</span><strong>Fortinet NSE 2 Certified in Cybersecurity</strong><span class="go">View credential ↗</span></a></li>
+      <li><a class="cert" href="https://www.credly.com/earner/earned/badge/968603b8-31c3-4e19-b5fe-61464dd7ddea"><span class="issuer">Fortinet</span><strong>Fortinet NSE 3 Certified in Cybersecurity</strong><span class="go">View credential ↗</span></a></li>
+      <li><a class="cert" href="https://www.credly.com/earner/earned/badge/68da8eb1-b786-4007-ab5c-38021276719a"><span class="issuer">Fortinet</span><strong>Fortinet Cybersecurity and Cloud Fundamentals 1.0</strong><span class="go">View credential ↗</span></a></li>
+      <li><a class="cert" href="https://www.credly.com/earner/earned/badge/6ea6620f-b271-4b46-8ddc-a8bb122f85ed"><span class="issuer">Fortinet</span><strong>Introduction to the Next Generation Firewall 1.0</strong><span class="go">View credential ↗</span></a></li>
+      <li><a class="cert" href="https://www.credly.com/earner/earned/badge/e4eb4724-cb3f-4cba-a285-8bc60f57bb04"><span class="issuer">Fortinet</span><strong>Fortinet FortiGate 7.6 Operator</strong><span class="go">View credential ↗</span></a></li>
+      <li><a class="cert" href="https://www.credly.com/badges/07dd1f50-d8ec-44b5-a7c4-17d70ff44cff/public_url"><span class="issuer">Cisco Networking Academy</span><strong>Introduction to Cybersecurity</strong><span class="go">View credential ↗</span></a></li>
+      <li><a class="cert" href="https://www.credly.com/badges/e8b0b4ba-44f1-45ac-8fce-6aa3287b93f7"><span class="issuer">Cisco Networking Academy</span><strong>Cyber Threat Management</strong><span class="go">View credential ↗</span></a></li>
+      <li><a class="cert" href="https://www.credly.com/badges/5df0b6d2-9f10-4ea3-990f-aeda25759240"><span class="issuer">Cisco Networking Academy</span><strong>Networking Basics</strong><span class="go">View credential ↗</span></a></li>
+      <li><a class="cert" href="https://www.netacad.com/certificates/?issuanceId=0e72fc8d-f3b4-4f3e-91ac-783d18d2e6d8"><span class="issuer">Cisco Networking Academy</span><strong>Getting Started with Cisco Packet Tracer</strong><span class="go">View credential ↗</span></a></li>
+      <li><a class="cert" href="https://www.credly.com/badges/408a68bb-9b50-4d10-a1ee-2f53bd50a9b6/public_url"><span class="issuer">Cisco Networking Academy</span><strong>Python Essentials 1</strong><span class="go">View credential ↗</span></a></li>
+      <li><a class="cert" href="https://www.credly.com/badges/d9b56d47-ef02-946f-8e980a5bd682/public_url"><span class="issuer">Cisco Networking Academy</span><strong>Python Essentials 2</strong><span class="go">View credential ↗</span></a></li>
+      <li><a class="cert" href="https://www.credly.com/badges/f46ef8a2-6b0d-4908-916c-2281e3cface7/public_url"><span class="issuer">Cisco Networking Academy</span><strong>HTML Essentials</strong><span class="go">View credential ↗</span></a></li>
+      <li><a class="cert" href="https://www.credly.com/badges/3cd79c35-7766-4da1-bcaf-4c209137305f"><span class="issuer">Cisco Networking Academy</span><strong>CSS Essentials</strong><span class="go">View credential ↗</span></a></li>
+    </ul>
+  </div>
+
+  <!-- Tech stack tab -->
+  <div class="panel" role="tabpanel" id="stack" aria-labelledby="tab-stack" hidden>
+    <p class="note">Languages, frameworks, and tools I use across my projects.</p>
+    <ul class="tiles">
+      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/react/react-original.svg" alt="React" width="52" height="52"><b>React</b></li>
+      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/javascript/javascript-original.svg" alt="JavaScript" width="52" height="52"><b>JavaScript</b></li>
+      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/html5/html5-original.svg" alt="HTML5" width="52" height="52"><b>HTML5</b></li>
+      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/css3/css3-original.svg" alt="CSS3" width="52" height="52"><b>CSS3</b></li>
+      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" width="52" height="52"><b>Tailwind CSS</b></li>
+      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/vitejs/vitejs-original.svg" alt="Vite" width="52" height="52"><b>Vite</b></li>
+      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/express/express-original.svg" alt="Express" width="52" height="52"><b>Express</b></li>
+      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/mongodb/mongodb-original.svg" alt="MongoDB" width="52" height="52"><b>MongoDB</b></li>
+      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/python/python-original.svg" alt="Python" width="52" height="52"><b>Python</b></li>
+      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/java/java-original.svg" alt="Java" width="52" height="52"><b>Java</b></li>
+      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/kotlin/kotlin-original.svg" alt="Kotlin" width="52" height="52"><b>Kotlin</b></li>
+      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/php/php-original.svg" alt="PHP" width="52" height="52"><b>PHP</b></li>
+      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/mysql/mysql-original.svg" alt="MySQL" width="52" height="52"><b>MySQL</b></li>
+      <li class="tile"><img src="https://cdn.simpleicons.org/firebase/FFCA28" alt="Firebase" width="52" height="52"><b>Firebase</b></li>
+      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/git/git-original.svg" alt="Git" width="52" height="52"><b>Git</b></li>
+      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/github/github-original.svg" alt="GitHub" width="52" height="52"><b>GitHub</b></li>
+    </ul>
+  </div>
 </div></section>
 
 <section id="education"><div class="wrap">
@@ -258,47 +339,6 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
       <p>Networking fundamentals, the Linux command line, and hands-on security practice.</p>
     </div>
   </div>
-  <h3 style="margin-top:40px">Certificates</h3>
-  <ul class="certs">
-    <li><a class="cert" href="https://appkademiya.online/verify/CERT-CCP-CYBERSECURITY-PROFESSIONAL-20261019-CDA29C086360"><span class="issuer">Appkademiya</span><strong>Certified Cybersecurity Professional</strong><span class="no"><b>Certificate no.</b>CERT-CCP-CYBERSECURITY-PROFESSIONAL-20261019-CDA29C086360</span><span class="go">Verify credential ↗</span></a></li>
-    <li><a class="cert" href="https://www.credly.com/earner/earned/badge/b48c4cce-8527-4ecf-873b-7a00f586a51a"><span class="issuer">Fortinet</span><strong>Fortinet NSE 1 Certified in Cybersecurity</strong><span class="go">View credential ↗</span></a></li>
-    <li><a class="cert" href="https://www.credly.com/earner/earned/badge/08cec1df-d837-43b7-9aa0-4ad78d0d287e"><span class="issuer">Fortinet</span><strong>Fortinet NSE 2 Certified in Cybersecurity</strong><span class="go">View credential ↗</span></a></li>
-    <li><a class="cert" href="https://www.credly.com/earner/earned/badge/968603b8-31c3-4e19-b5fe-61464dd7ddea"><span class="issuer">Fortinet</span><strong>Fortinet NSE 3 Certified in Cybersecurity</strong><span class="go">View credential ↗</span></a></li>
-    <li><a class="cert" href="https://www.credly.com/earner/earned/badge/68da8eb1-b786-4007-ab5c-38021276719a"><span class="issuer">Fortinet</span><strong>Fortinet Cybersecurity and Cloud Fundamentals 1.0</strong><span class="go">View credential ↗</span></a></li>
-    <li><a class="cert" href="https://www.credly.com/earner/earned/badge/6ea6620f-b271-4b46-8ddc-a8bb122f85ed"><span class="issuer">Fortinet</span><strong>Introduction to the Next Generation Firewall 1.0</strong><span class="go">View credential ↗</span></a></li>
-    <li><a class="cert" href="https://www.credly.com/earner/earned/badge/e4eb4724-cb3f-4cba-a285-8bc60f57bb04"><span class="issuer">Fortinet</span><strong>Fortinet FortiGate 7.6 Operator</strong><span class="go">View credential ↗</span></a></li>
-    <li><a class="cert" href="https://www.credly.com/badges/07dd1f50-d8ec-44b5-a7c4-17d70ff44cff/public_url"><span class="issuer">Cisco Networking Academy</span><strong>Introduction to Cybersecurity</strong><span class="go">View credential ↗</span></a></li>
-    <li><a class="cert" href="https://www.credly.com/badges/e8b0b4ba-44f1-45ac-8fce-6aa3287b93f7"><span class="issuer">Cisco Networking Academy</span><strong>Cyber Threat Management</strong><span class="go">View credential ↗</span></a></li>
-    <li><a class="cert" href="https://www.credly.com/badges/5df0b6d2-9f10-4ea3-990f-aeda25759240"><span class="issuer">Cisco Networking Academy</span><strong>Networking Basics</strong><span class="go">View credential ↗</span></a></li>
-    <li><a class="cert" href="https://www.netacad.com/certificates/?issuanceId=0e72fc8d-f3b4-4f3e-91ac-783d18d2e6d8"><span class="issuer">Cisco Networking Academy</span><strong>Getting Started with Cisco Packet Tracer</strong><span class="go">View credential ↗</span></a></li>
-    <li><a class="cert" href="https://www.credly.com/badges/408a68bb-9b50-4d10-a1ee-2f53bd50a9b6/public_url"><span class="issuer">Cisco Networking Academy</span><strong>Python Essentials 1</strong><span class="go">View credential ↗</span></a></li>
-    <li><a class="cert" href="https://www.credly.com/badges/d9b56d47-ef02-946f-8e980a5bd682/public_url"><span class="issuer">Cisco Networking Academy</span><strong>Python Essentials 2</strong><span class="go">View credential ↗</span></a></li>
-    <li><a class="cert" href="https://www.credly.com/badges/f46ef8a2-6b0d-4908-916c-2281e3cface7/public_url"><span class="issuer">Cisco Networking Academy</span><strong>HTML Essentials</strong><span class="go">View credential ↗</span></a></li>
-    <li><a class="cert" href="https://www.credly.com/badges/3cd79c35-7766-4da1-bcaf-4c209137305f"><span class="issuer">Cisco Networking Academy</span><strong>CSS Essentials</strong><span class="go">View credential ↗</span></a></li>
-  </ul>
-</div></section>
-
-<section id="stack"><div class="wrap">
-  <h2>Tech stack</h2>
-  <p class="note">Languages, frameworks, and tools I use across my projects.</p>
-  <ul class="tiles">
-    <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/react/react-original.svg" alt="React" width="52" height="52" loading="lazy"><b>React</b></li>
-    <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/javascript/javascript-original.svg" alt="JavaScript" width="52" height="52" loading="lazy"><b>JavaScript</b></li>
-    <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/html5/html5-original.svg" alt="HTML5" width="52" height="52" loading="lazy"><b>HTML5</b></li>
-    <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/css3/css3-original.svg" alt="CSS3" width="52" height="52" loading="lazy"><b>CSS3</b></li>
-    <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" width="52" height="52" loading="lazy"><b>Tailwind CSS</b></li>
-    <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/vitejs/vitejs-original.svg" alt="Vite" width="52" height="52" loading="lazy"><b>Vite</b></li>
-    <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/express/express-original.svg" alt="Express" width="52" height="52" loading="lazy"><b>Express</b></li>
-    <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/mongodb/mongodb-original.svg" alt="MongoDB" width="52" height="52" loading="lazy"><b>MongoDB</b></li>
-    <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/python/python-original.svg" alt="Python" width="52" height="52" loading="lazy"><b>Python</b></li>
-    <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/java/java-original.svg" alt="Java" width="52" height="52" loading="lazy"><b>Java</b></li>
-    <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/kotlin/kotlin-original.svg" alt="Kotlin" width="52" height="52" loading="lazy"><b>Kotlin</b></li>
-    <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/php/php-original.svg" alt="PHP" width="52" height="52" loading="lazy"><b>PHP</b></li>
-    <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/mysql/mysql-original.svg" alt="MySQL" width="52" height="52" loading="lazy"><b>MySQL</b></li>
-    <li class="tile"><img src="https://cdn.simpleicons.org/firebase/FFCA28" alt="Firebase" width="52" height="52" loading="lazy"><b>Firebase</b></li>
-    <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/git/git-original.svg" alt="Git" width="52" height="52" loading="lazy"><b>Git</b></li>
-    <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/github/github-original.svg" alt="GitHub" width="52" height="52" loading="lazy"><b>GitHub</b></li>
-  </ul>
 </div></section>
 
 <section id="play"><div class="wrap">
@@ -423,7 +463,40 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
   init();
 })();
 
-/* Tech stack tiles: reveal on scroll and fall back to initials if an icon fails to load */
+/* Portfolio tabs */
+(function(){
+  var list=document.querySelector('.tablist'); if(!list) return;
+  var tabs=[].slice.call(list.querySelectorAll('[role=tab]'));
+  function show(tab,focus){
+    tabs.forEach(function(t){
+      var on=t===tab;
+      t.setAttribute('aria-selected',on?'true':'false');
+      t.tabIndex=on?0:-1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden=!on;
+    });
+    if(focus)tab.focus();
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){show(t);});
+    t.addEventListener('keydown',function(e){
+      var n=null;
+      if(e.key==='ArrowRight')n=tabs[(i+1)%tabs.length];
+      else if(e.key==='ArrowLeft')n=tabs[(i-1+tabs.length)%tabs.length];
+      else if(e.key==='Home')n=tabs[0];
+      else if(e.key==='End')n=tabs[tabs.length-1];
+      if(n){e.preventDefault();show(n,true);}
+    });
+  });
+  function fromHash(){
+    var id=location.hash.slice(1);
+    var t=tabs.filter(function(x){return x.getAttribute('aria-controls')===id;})[0];
+    if(t){show(t);document.getElementById('portfolio').scrollIntoView();}
+  }
+  window.addEventListener('hashchange',fromHash);
+  fromHash();
+})();
+
+/* Tech stack tiles: reveal on scroll and fall back to initials only if an icon really fails to load */
 (function(){
   var tiles=[].slice.call(document.querySelectorAll('.tile'));
   if(!tiles.length) return;
@@ -439,9 +512,16 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
   }
   tiles.forEach(function(t){
     var img=t.querySelector('img'); if(!img) return;
-    function fb(){var s=document.createElement('span');s.className='fb';s.textContent=img.alt.slice(0,2);img.replaceWith(s);}
-    img.addEventListener('error',fb);
-    if(img.complete&&img.naturalWidth===0)fb();
+    function fb(){
+      if(!img.parentNode) return;
+      var s=document.createElement('span');
+      s.className='fb';
+      s.textContent=img.alt.slice(0,2);
+      img.replaceWith(s);
+    }
+    var probe=new Image();
+    probe.onerror=fb;
+    probe.src=img.src;
   });
 })();
 
