@@ -42,7 +42,7 @@ h3{font:600 1.2rem/1.3 var(--display);margin:0}
 /* Hero */
 .hero{padding-top:clamp(36px,6vw,72px)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:48px}
-@media(min-width:860px){.hero-grid{grid-template-columns:minmax(0,1fr) 300px;gap:56px;align-items:center}}
+@media(min-width:860px){.hero-grid{grid-template-columns:minmax(0,1fr) 340px;gap:56px;align-items:center}}
 .status{display:flex;align-items:center;gap:10px;margin:0 0 20px;font:400 .8rem/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .dot{flex:none;width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(46,157,91,.18)}
 h1{font:700 clamp(2.8rem,1rem + 8vw,6.2rem)/.98 var(--display);letter-spacing:-.04em;margin:0 0 24px}
@@ -53,12 +53,32 @@ h1{font:700 clamp(2.8rem,1rem + 8vw,6.2rem)/.98 var(--display);letter-spacing:-.
 .stats dd{margin:0;font:400 .72rem/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .textlink{font:500 .85rem var(--mono);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px;margin-left:10px}
 .textlink:hover{color:var(--link);border-color:var(--link)}
-.photo{margin:0;position:relative;width:100%;max-width:300px}
-.frame{background:var(--card);border:1px solid var(--line);padding:12px}
-.pic{position:relative;aspect-ratio:4/5;background:var(--accent);display:grid;place-items:center;overflow:hidden}
-.pic span{font:700 3.4rem var(--display);color:var(--accent-ink);opacity:.45}
-.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
-@media(max-width:859px){.photo{max-width:260px}}
+
+/* Lanyard ID card */
+.lanyard{position:relative;width:100%;max-width:340px;height:590px;margin:0 auto}
+.lanyard svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.strap{fill:none;stroke:#2a1a4d;stroke-width:18;stroke-linejoin:round}
+.strap-line{fill:none;stroke:rgba(255,255,255,.28);stroke-width:1;stroke-dasharray:3 5}
+.strap-text{font:500 8px "DM Mono",ui-monospace,monospace;letter-spacing:.18em;fill:#e9ddff}
+.tag{position:absolute;left:0;top:-10px;width:224px;transform-origin:50% 10px;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;will-change:transform}
+.tag.grabbing{cursor:grabbing}
+.clip{position:relative;height:34px;z-index:2}
+.ring{position:absolute;left:50%;top:0;width:20px;height:20px;margin-left:-10px;border:3px solid #9b9ba8;border-radius:50%}
+.bar{position:absolute;left:50%;top:14px;width:46px;height:22px;margin-left:-23px;border-radius:6px 6px 4px 4px;background:linear-gradient(#eeeef3,#a8a9b6);box-shadow:0 2px 4px rgba(42,26,77,.25)}
+.card{position:relative;width:224px;height:334px;margin-top:-8px;display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,#efe6ff 0%,#ffffff 52%);box-shadow:0 18px 40px rgba(42,26,77,.18),0 2px 6px rgba(42,26,77,.08)}
+.slot{position:absolute;left:50%;top:16px;width:44px;height:8px;margin-left:-22px;border-radius:99px;background:var(--bg);border:1px solid var(--line)}
+.c-head{display:flex;justify-content:space-between;align-items:center;padding:34px 14px 0;font:400 .58rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.chip{padding:4px 8px;border-radius:99px;background:var(--accent);color:var(--accent-ink)}
+.c-title{padding:8px 14px 0;font:700 2.1rem/.95 var(--display);letter-spacing:-.03em;color:var(--accent-ink)}
+.c-photo{position:relative;flex:1;min-height:0;margin:8px 14px 0;border-radius:10px;overflow:hidden;background:var(--accent);display:grid;place-items:center}
+.c-photo .ini{font:700 3rem var(--display);color:var(--accent-ink);opacity:.4}
+.c-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;-webkit-user-drag:none;pointer-events:none}
+.c-name{position:absolute;left:8px;bottom:8px;padding:4px 8px;border:1px solid var(--line);border-radius:4px;background:#fff;font:700 .68rem/1 var(--display);letter-spacing:.02em;text-transform:uppercase;transform:rotate(-2deg)}
+.c-foot{display:flex;justify-content:space-between;align-items:flex-end;padding:10px 14px 14px}
+.c-foot b{font:700 1.3rem/1 var(--display);letter-spacing:-.02em;color:var(--accent-ink)}
+.c-foot span{font:400 .56rem/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:right}
+.hint{position:absolute;left:0;right:0;bottom:0;margin:0;text-align:center;font:400 .7rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);pointer-events:none;transition:opacity .3s}
+@media(max-width:560px){.lanyard{height:570px}}
 
 /* Education */
 .edu{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px 24px;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:clamp(18px,3vw,28px)}
@@ -94,7 +114,7 @@ a.cert:hover{border-color:var(--accent)}
 .proj p.role b{font:500 .72rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-right:6px}
 .proj a.src{font-weight:600;color:var(--link);width:max-content}
 .proj-head{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}
-.tag{font-size:.82rem;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:1px 10px}
+.tag-pill{font-size:.82rem;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:1px 10px}
 .two{display:grid;gap:28px}
 @media(min-width:700px){.two{grid-template-columns:1fr 1fr}}
 .two h3{margin-bottom:8px}
@@ -125,40 +145,60 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
     </dl>
     <div class="btns">
       <a class="btn primary" href="mailto:romanillos.einjhel@gmail.com">Get in touch ↗</a>
-      <a class="textlink" href="CV_ROMANILLOS.pdf" download>Download CV ↓</a>
+      <a class="textlink" href="cv.pdf" download>Download CV ↓</a>
     </div>
   </div>
-  <figure class="photo">
-    <div class="frame"><div class="pic"><span aria-hidden="true">ER</span><img src="photo.jpg" alt="Portrait of Einjhel Romanillos" onerror="this.onerror=function(){this.remove()};this.src='photo.png'"></div></div>
-  </figure>
+
+  <div class="lanyard" id="lanyard" role="img" aria-label="Interactive ID card of Einjhel Romanillos. Drag it to make it swing.">
+    <svg aria-hidden="true">
+      <path id="strapPath" class="strap" d="M0 0"/>
+      <path id="strapLine" class="strap-line" d="M0 0"/>
+      <text class="strap-text"><textPath href="#strapPath" startOffset="205">EINJHEL ROMANILLOS · PORTFOLIO · EINJHEL ROMANILLOS · PORTFOLIO</textPath></text>
+    </svg>
+    <div class="tag" id="tag">
+      <div class="clip"><i class="ring"></i><i class="bar"></i></div>
+      <div class="card">
+        <i class="slot"></i>
+        <div class="c-head"><span class="chip">BSIT · 3rd year</span><span>PHINMA UPang</span></div>
+        <div class="c-title">STUDENT</div>
+        <div class="c-photo">
+          <span class="ini" aria-hidden="true">ER</span>
+          <img src="photo.jpg" alt="Portrait of Einjhel Romanillos" draggable="false" onerror="this.onerror=function(){this.remove()};this.src='photo.png'">
+          <span class="c-name">Einjhel Romanillos</span>
+        </div>
+        <div class="c-foot"><b>PORTFOLIO</b><span>Computer<br>Security</span></div>
+      </div>
+    </div>
+    <p class="hint" id="hint">Drag the card</p>
+  </div>
 </div></section>
 
 <section id="projects"><div class="wrap">
   <h2>Selected projects</h2>
   <p class="note">All of my projects were built as group projects.</p>
   <article class="proj">
-    <div class="proj-head"><h3>Upang Delivers</h3><span class="tag">Group project</span></div>
+    <div class="proj-head"><h3>Upang Delivers</h3><span class="tag-pill">Group project</span></div>
     <span class="stack">React, Vite, Tailwind, Express, MongoDB</span>
     <p>An errand and delivery platform for PHINMA University of Pangasinan, built around campus micro-gigs. Student and admin screens in React, with an Express and MongoDB backend that handles accounts with JWT sign-in and input validation.</p>
     <p class="role"><b>My role</b>One of the developers</p>
     <a class="src" href="https://github.com/zinoiu/Upang-Delivers1">Source code</a>
   </article>
   <article class="proj">
-    <div class="proj-head"><h3>ChainLedger</h3><span class="tag">Group project</span></div>
+    <div class="proj-head"><h3>ChainLedger</h3><span class="tag-pill">Group project</span></div>
     <span class="stack">PHP, MySQL, Tailwind CSS, JavaScript</span>
     <p>An e-wallet transaction monitoring system that helps small businesses record, organize, and analyze their digital transactions. It has a real-time dashboard, a ledger with filtering and sorting, and secure sign-up and login, with sanitized database queries.</p>
     <p class="role"><b>My role</b>UI/UX and documentation</p>
     <a class="src" href="https://github.com/zinoiu/ChainLedger1">Source code</a>
   </article>
   <article class="proj">
-    <div class="proj-head"><h3>InvestEd</h3><span class="tag">Group project</span></div>
+    <div class="proj-head"><h3>InvestEd</h3><span class="tag-pill">Group project</span></div>
     <span class="stack">Kotlin, Firebase</span>
     <p>A budgeting and investing app for students that helps them manage their money and learn to invest.</p>
     <p class="role"><b>My role</b>One of the developers</p>
     <a class="src" href="https://github.com/zinoiu/InvestEd0">Source code</a>
   </article>
   <article class="proj">
-    <div class="proj-head"><h3>Rows of Victory</h3><span class="tag">Group project</span></div>
+    <div class="proj-head"><h3>Rows of Victory</h3><span class="tag-pill">Group project</span></div>
     <span class="stack">Java Swing</span>
     <p>A Tic-Tac-Toe-inspired game that trains planning and pattern spotting. Play a friend or a computer opponent at three difficulty levels, and each player keeps only their three latest marks.</p>
     <p class="role"><b>My role</b>Documentation</p>
@@ -169,14 +209,14 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
 <section id="more"><div class="wrap">
   <h2>More work</h2>
   <article class="proj">
-    <div class="proj-head"><h3>Translate Go</h3><span class="tag">Group project</span></div>
+    <div class="proj-head"><h3>Translate Go</h3><span class="tag-pill">Group project</span></div>
     <span class="stack">Python, customtkinter</span>
     <p>A desktop app that translates typed or spoken text between languages, for travel, practice, or chatting across languages.</p>
     <p class="role"><b>My role</b>Documentation</p>
     <a class="src" href="https://github.com/zinoiu/Python-Project">Source code</a>
   </article>
   <article class="proj">
-    <div class="proj-head"><h3>Elemental Elegance</h3><span class="tag">Group project</span></div>
+    <div class="proj-head"><h3>Elemental Elegance</h3><span class="tag-pill">Group project</span></div>
     <span class="stack">HTML, CSS, JavaScript</span>
     <p>An art gallery site about famous painters, with 15 searchable artworks and a pop-up of details for each one.</p>
     <p class="role"><b>My role</b>Documentation</p>
@@ -249,14 +289,112 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
 <section id="contact"><div class="wrap">
   <h2>Contact</h2>
   <p class="lede" style="margin-bottom:20px">If you’re hiring, want to collaborate, or have feedback on my code, I’d like to hear from you.</p>
-  <div class="btns"><a class="btn primary" href="mailto:romanillos.einjhel@gmail.com">Email me</a><a class="btn" href="https://www.linkedin/in/einjhel-romanillos-
-06868a329">LinkedIn</a><a class="btn" href="https://github.com/zinoiu">GitHub</a></div>
+  <div class="btns"><a class="btn primary" href="mailto:romanillos.einjhel@gmail.com">Email me</a><a class="btn" href="https://www.linkedin.com/in/romanillos-einjhel">LinkedIn</a><a class="btn" href="https://github.com/zinoiu">GitHub</a></div>
 </div></section>
 </main>
 
 <footer><div class="wrap">Einjhel Romanillos</div></footer>
 
 <script>
+/* Lanyard ID card: a small rope simulation with a draggable card */
+(function(){
+  var box=document.getElementById('lanyard'); if(!box) return;
+  var tag=document.getElementById('tag'),strap=document.getElementById('strapPath'),line=document.getElementById('strapLine'),hint=document.getElementById('hint');
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var N=7,L=33,G=0.55,DAMP=0.992,pts=[],ang=0,drag=null,raf=0,lastT=0,acc=0,rect=box.getBoundingClientRect();
+
+  function init(){
+    var W=box.clientWidth;
+    pts=[];
+    for(var i=0;i<=N;i++){pts.push({x:W/2,y:i*L,px:W/2,py:i*L});}
+    if(!reduce){pts[N].px-=5;}
+    ang=0;
+    if(reduce){for(var s=0;s<300;s++)step();}
+    render();
+  }
+
+  function step(){
+    var i,p;
+    for(i=1;i<=N;i++){
+      if(drag&&i===N)continue;
+      p=pts[i];
+      var vx=(p.x-p.px)*DAMP,vy=(p.y-p.py)*DAMP;
+      p.px=p.x;p.py=p.y;p.x+=vx;p.y+=vy+(i===N?G*2:G);
+    }
+    if(drag){
+      var a=pts[0],c=pts[N];
+      var tx=drag.x-rect.left-drag.ox,ty=drag.y-rect.top-drag.oy;
+      var dx=tx-a.x,dy=ty-a.y,d=Math.sqrt(dx*dx+dy*dy),m=N*L;
+      if(d>m){tx=a.x+dx/d*m;ty=a.y+dy/d*m;}
+      var mx=tx-c.x,my=ty-c.y,md=Math.sqrt(mx*mx+my*my);
+      if(md>36){mx*=36/md;my*=36/md;}
+      c.px=c.x;c.py=c.y;c.x+=mx;c.y+=my;
+    }
+    for(var k=0;k<14;k++){
+      for(i=0;i<N;i++){
+        var p0=pts[i],p1=pts[i+1];
+        var ex=p1.x-p0.x,ey=p1.y-p0.y,dist=Math.sqrt(ex*ex+ey*ey)||0.0001,diff=(dist-L)/dist;
+        var w0=i===0?0:1,w1=(drag&&i+1===N)?0:1,tw=w0+w1;
+        if(!tw)continue;
+        p0.x+=ex*diff*w0/tw;p0.y+=ey*diff*w0/tw;
+        p1.x-=ex*diff*w1/tw;p1.y-=ey*diff*w1/tw;
+      }
+    }
+  }
+
+  function render(){
+    var p=pts[N],q=pts[N-1],i;
+    var target=Math.atan2(-(p.x-q.x),(p.y-q.y));
+    ang+=(target-ang)*0.18;
+    tag.style.transform='translate('+p.x+'px,'+p.y+'px) translateX(-50%) rotate('+ang+'rad)';
+    var d='M '+pts[0].x+' -200 L '+pts[0].x+' '+pts[0].y;
+    for(i=1;i<N;i++){
+      var a=pts[i],b=pts[i+1];
+      d+=' Q '+a.x+' '+a.y+' '+((a.x+b.x)/2)+' '+((a.y+b.y)/2);
+    }
+    d+=' L '+p.x+' '+p.y;
+    strap.setAttribute('d',d);
+    line.setAttribute('d',d);
+  }
+
+  function frame(t){
+    rect=box.getBoundingClientRect();
+    acc+=Math.min(50,t-lastT);lastT=t;
+    while(acc>=16.667){step();acc-=16.667;}
+    render();
+    raf=requestAnimationFrame(frame);
+  }
+  function start(){if(!raf&&!reduce){lastT=performance.now();raf=requestAnimationFrame(frame);}}
+  function stop(){cancelAnimationFrame(raf);raf=0;}
+
+  if(!reduce){
+    tag.addEventListener('pointerdown',function(e){
+      rect=box.getBoundingClientRect();
+      drag={x:e.clientX,y:e.clientY,ox:e.clientX-rect.left-pts[N].x,oy:e.clientY-rect.top-pts[N].y};
+      tag.classList.add('grabbing');
+      try{tag.setPointerCapture(e.pointerId);}catch(_){}
+      hint.style.opacity=0;
+      e.preventDefault();
+    });
+    tag.addEventListener('pointermove',function(e){if(drag){drag.x=e.clientX;drag.y=e.clientY;}});
+    var release=function(){drag=null;tag.classList.remove('grabbing');};
+    tag.addEventListener('pointerup',release);
+    tag.addEventListener('pointercancel',release);
+  }else{
+    tag.style.cursor='default';hint.style.display='none';
+  }
+
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){if(es[0].isIntersecting)start();else stop();}).observe(box);
+  }else{start();}
+  if('ResizeObserver' in window){
+    var lw=0;
+    new ResizeObserver(function(){var w=box.clientWidth;if(Math.abs(w-lw)>1){lw=w;init();}}).observe(box);
+  }
+  init();
+})();
+
+/* Tic-Tac-Toe */
 (function(){
   var b=document.getElementById('board'),s=document.getElementById('status'),r=document.getElementById('reset');
   var L=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]],g,t,done,cells=[];
