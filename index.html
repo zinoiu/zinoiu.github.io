@@ -78,11 +78,11 @@ h1{font:700 clamp(2.8rem,1rem + 8vw,6.2rem)/.98 var(--display);letter-spacing:-.
 .c-foot b{font:700 1.3rem/1 var(--display);letter-spacing:-.02em;color:var(--accent-ink)}
 .c-foot span{font:400 .56rem/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:right}
 .hint{position:absolute;left:0;right:0;bottom:0;margin:0;text-align:center;font:400 .7rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);pointer-events:none;transition:opacity .3s}
+@media(max-width:560px){.lanyard{height:570px}}
 @media(max-width:859px){
   .lanyard{clip-path:inset(0 -120px -60px -120px)}
   .lanyard::before{content:"";position:absolute;z-index:1;left:50%;top:0;width:44px;height:12px;margin-left:-22px;border-radius:0 0 8px 8px;background:linear-gradient(#eeeef3,#a8a9b6);box-shadow:0 2px 4px rgba(42,26,77,.25)}
 }
-
 
 /* Tabs */
 .tabs{display:flex;justify-content:center;margin:0 0 clamp(24px,4vw,40px)}
@@ -114,17 +114,23 @@ a.cert:hover{border-color:var(--accent)}
 .cert .no{padding-top:8px;font:400 .68rem/1.5 var(--mono);letter-spacing:.03em;color:var(--muted);overflow-wrap:anywhere}
 .cert .no b{display:block;font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
 
-/* Tech stack tiles */
+/* Tech stack: filters and tiles */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.fbtn{padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--muted);font:600 .9rem var(--body);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.fbtn:hover{color:var(--ink);border-color:var(--accent)}
+.fbtn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin:0;padding:0;list-style:none}
-.tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;aspect-ratio:1/1.02;padding:18px 12px;border:1px solid var(--line);background:var(--card);border-radius:18px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:172px;padding:18px 12px;border:1px solid var(--line);background:var(--card);border-radius:18px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.tile[hidden]{display:none}
 .tile:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 12px 28px rgba(109,63,199,.14)}
 .tile img,.tile .fb{width:52px;height:52px;object-fit:contain}
 .tile .fb{display:grid;place-items:center;border-radius:12px;background:var(--accent);color:var(--accent-ink);font:700 1.1rem var(--display)}
 .tile b{font:600 .98rem/1.2 var(--display);text-align:center}
+.tile small{margin-top:-6px;font:400 .66rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}}
 .js .tile{opacity:0}
 .js .tile.in{opacity:1;animation:rise .5s ease backwards;animation-delay:calc(var(--i,0)*35ms)}
-@media(max-width:560px){.tiles{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}.tile{padding:14px 8px;gap:10px}.tile img,.tile .fb{width:44px;height:44px}}
+@media(max-width:560px){.tiles{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}.tile{min-height:150px;padding:14px 8px;gap:10px}.tile img,.tile .fb{width:44px;height:44px}}
 @media(prefers-reduced-motion:reduce){.js .tile{opacity:1}.js .tile.in{animation:none}}
 
 /* Game */
@@ -201,11 +207,12 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
         <div class="c-foot"><b>PORTFOLIO</b><span>Computer<br>Security</span></div>
       </div>
     </div>
+    <p class="hint" id="hint">Drag the card</p>
   </div>
 </div></section>
 
 <section id="portfolio"><div class="wrap">
- <h2 style="text-align:center">Portfolio</h2>
+  <h2 style="text-align:center">Portfolio</h2>
   <div class="tabs">
     <div class="tablist" role="tablist" aria-label="Portfolio sections">
       <button class="tab" role="tab" id="tab-projects" aria-controls="projects" aria-selected="true" type="button">
@@ -298,23 +305,31 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
   <!-- Tech stack tab -->
   <div class="panel" role="tabpanel" id="stack" aria-labelledby="tab-stack" hidden>
     <p class="note">Languages, frameworks, and tools I use across my projects.</p>
+    <div class="filters" role="group" aria-label="Filter tech stack by category">
+      <button class="fbtn" type="button" data-filter="all" aria-pressed="true">All</button>
+      <button class="fbtn" type="button" data-filter="programming" aria-pressed="false">Programming</button>
+      <button class="fbtn" type="button" data-filter="frontend" aria-pressed="false">Frontend</button>
+      <button class="fbtn" type="button" data-filter="backend" aria-pressed="false">Backend</button>
+      <button class="fbtn" type="button" data-filter="database" aria-pressed="false">Database</button>
+      <button class="fbtn" type="button" data-filter="tools" aria-pressed="false">Tools</button>
+    </div>
     <ul class="tiles">
-      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/react/react-original.svg" alt="React" width="52" height="52"><b>React</b></li>
-      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/javascript/javascript-original.svg" alt="JavaScript" width="52" height="52"><b>JavaScript</b></li>
-      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/html5/html5-original.svg" alt="HTML5" width="52" height="52"><b>HTML5</b></li>
-      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/css3/css3-original.svg" alt="CSS3" width="52" height="52"><b>CSS3</b></li>
-      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" width="52" height="52"><b>Tailwind CSS</b></li>
-      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/vitejs/vitejs-original.svg" alt="Vite" width="52" height="52"><b>Vite</b></li>
-      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/express/express-original.svg" alt="Express" width="52" height="52"><b>Express</b></li>
-      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/mongodb/mongodb-original.svg" alt="MongoDB" width="52" height="52"><b>MongoDB</b></li>
-      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/python/python-original.svg" alt="Python" width="52" height="52"><b>Python</b></li>
-      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/java/java-original.svg" alt="Java" width="52" height="52"><b>Java</b></li>
-      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/kotlin/kotlin-original.svg" alt="Kotlin" width="52" height="52"><b>Kotlin</b></li>
-      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/php/php-original.svg" alt="PHP" width="52" height="52"><b>PHP</b></li>
-      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/mysql/mysql-original.svg" alt="MySQL" width="52" height="52"><b>MySQL</b></li>
-      <li class="tile"><img src="https://cdn.simpleicons.org/firebase/FFCA28" alt="Firebase" width="52" height="52"><b>Firebase</b></li>
-      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/git/git-original.svg" alt="Git" width="52" height="52"><b>Git</b></li>
-      <li class="tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/github/github-original.svg" alt="GitHub" width="52" height="52"><b>GitHub</b></li>
+      <li class="tile" data-cat="programming"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/javascript/javascript-original.svg" alt="JavaScript" width="52" height="52"><b>JavaScript</b><small>Programming</small></li>
+      <li class="tile" data-cat="programming"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/python/python-original.svg" alt="Python" width="52" height="52"><b>Python</b><small>Programming</small></li>
+      <li class="tile" data-cat="programming"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/java/java-original.svg" alt="Java" width="52" height="52"><b>Java</b><small>Programming</small></li>
+      <li class="tile" data-cat="programming"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/kotlin/kotlin-original.svg" alt="Kotlin" width="52" height="52"><b>Kotlin</b><small>Programming</small></li>
+      <li class="tile" data-cat="programming"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/php/php-original.svg" alt="PHP" width="52" height="52"><b>PHP</b><small>Programming</small></li>
+      <li class="tile" data-cat="frontend"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/html5/html5-original.svg" alt="HTML5" width="52" height="52"><b>HTML5</b><small>Frontend</small></li>
+      <li class="tile" data-cat="frontend"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/css3/css3-original.svg" alt="CSS3" width="52" height="52"><b>CSS3</b><small>Frontend</small></li>
+      <li class="tile" data-cat="frontend"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" width="52" height="52"><b>Tailwind CSS</b><small>Frontend</small></li>
+      <li class="tile" data-cat="frontend"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/react/react-original.svg" alt="React" width="52" height="52"><b>React</b><small>Frontend</small></li>
+      <li class="tile" data-cat="backend"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/express/express-original.svg" alt="Express" width="52" height="52"><b>Express</b><small>Backend</small></li>
+      <li class="tile" data-cat="database"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/mysql/mysql-original.svg" alt="MySQL" width="52" height="52"><b>MySQL</b><small>Database</small></li>
+      <li class="tile" data-cat="database"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/mongodb/mongodb-original.svg" alt="MongoDB" width="52" height="52"><b>MongoDB</b><small>Database</small></li>
+      <li class="tile" data-cat="database"><img src="https://cdn.simpleicons.org/firebase/FFCA28" alt="Firebase" width="52" height="52"><b>Firebase</b><small>Database</small></li>
+      <li class="tile" data-cat="tools"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/vitejs/vitejs-original.svg" alt="Vite" width="52" height="52"><b>Vite</b><small>Tools</small></li>
+      <li class="tile" data-cat="tools"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/git/git-original.svg" alt="Git" width="52" height="52"><b>Git</b><small>Tools</small></li>
+      <li class="tile" data-cat="tools"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/github/github-original.svg" alt="GitHub" width="52" height="52"><b>GitHub</b><small>Tools</small></li>
     </ul>
   </div>
 </div></section>
@@ -499,7 +514,7 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
   fromHash();
 })();
 
-/* Tech stack tiles: reveal on scroll and fall back to initials only if an icon really fails to load */
+/* Tech stack: reveal on scroll, category filters, and initials fallback if an icon really fails to load */
 (function(){
   var tiles=[].slice.call(document.querySelectorAll('.tile'));
   if(!tiles.length) return;
@@ -513,6 +528,25 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
   }else{
     tiles.forEach(function(t){t.classList.add('in');});
   }
+
+  var btns=[].slice.call(document.querySelectorAll('.fbtn'));
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      var cat=b.getAttribute('data-filter'),n=0;
+      btns.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+      tiles.forEach(function(t){
+        var show=cat==='all'||t.getAttribute('data-cat')===cat;
+        t.hidden=!show;
+        t.classList.remove('in');
+        if(show){
+          t.style.setProperty('--i',n++%8);
+          void t.offsetWidth;
+          t.classList.add('in');
+        }
+      });
+    });
+  });
+
   tiles.forEach(function(t){
     var img=t.querySelector('img'); if(!img) return;
     function fb(){
@@ -545,4 +579,5 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
 })();
 </script>
 </body>
+</html>
 </html>
