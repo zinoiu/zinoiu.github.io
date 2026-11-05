@@ -163,6 +163,7 @@ a.cert:hover{border-color:var(--accent)}
 .shots img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top;transition:transform .25s ease}
 .shots a:hover img{transform:scale(1.03)}
 @media(prefers-reduced-motion:reduce){.shots a:hover img{transform:none}}
+  .shots.full img{aspect-ratio:auto;height:auto;object-fit:contain}
 
 .two{display:grid;gap:28px}
 @media(min-width:700px){.two{grid-template-columns:1fr 1fr}}
@@ -281,7 +282,7 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
         <span class="stack">Java Swing</span>
         <p>A Tic-Tac-Toe-inspired game that trains planning and pattern spotting. Play a friend or a computer opponent at three difficulty levels, and each player keeps only their three latest marks.</p>
         <p class="role"><b>My role</b>Documentation</p>
-        <div class="shots">
+       <div class="shots full">
           <a href="images/rov-mode.png" target="_blank" rel="noopener"><img src="images/rov-mode.png" alt="Rows of Victory mode select" loading="lazy"></a>
           <a href="images/rov-difficulty.png" target="_blank" rel="noopener"><img src="images/rov-difficulty.png" alt="Rows of Victory difficulty select" loading="lazy"></a>
           <a href="images/rov-gameplay.png" target="_blank" rel="noopener"><img src="images/rov-gameplay.png" alt="Rows of Victory gameplay" loading="lazy"></a>
