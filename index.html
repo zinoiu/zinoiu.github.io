@@ -155,6 +155,15 @@ a.cert:hover{border-color:var(--accent)}
 .proj a.src{font-weight:600;color:var(--link);width:max-content}
 .proj-head{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}
 .tag-pill{font-size:.82rem;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:1px 10px}
+
+/* Project screenshots */
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0 6px}
+.shots.one{grid-template-columns:minmax(0,480px)}
+.shots a{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card)}
+.shots img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top;transition:transform .25s ease}
+.shots a:hover img{transform:scale(1.03)}
+@media(prefers-reduced-motion:reduce){.shots a:hover img{transform:none}}
+
 .two{display:grid;gap:28px}
 @media(min-width:700px){.two{grid-template-columns:1fr 1fr}}
 .two h3{margin-bottom:8px}
@@ -237,6 +246,10 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
         <span class="stack">React, Vite, Tailwind, Express, MongoDB</span>
         <p>An errand and delivery platform for PHINMA University of Pangasinan, built around campus micro-gigs. Student and admin screens in React, with an Express and MongoDB backend that handles accounts with JWT sign-in and input validation.</p>
         <p class="role"><b>My role</b>One of the developers</p>
+        <div class="shots">
+          <a href="images/upangdelivers.png" target="_blank" rel="noopener"><img src="images/upangdelivers.png" alt="Upang Delivers home screen" loading="lazy"></a>
+          <a href="images/upangdelivers-errand.png" target="_blank" rel="noopener"><img src="images/upangdelivers-errand.png" alt="Upang Delivers errand screen" loading="lazy"></a>
+        </div>
         <a class="src" href="https://github.com/zinoiu/Upang-Delivers1">Source code</a>
       </article>
       <article class="proj">
@@ -244,6 +257,10 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
         <span class="stack">PHP, MySQL, Tailwind CSS, JavaScript</span>
         <p>An e-wallet transaction monitoring system that helps small businesses record, organize, and analyze their digital transactions. It has a real-time dashboard, a ledger with filtering and sorting, and secure sign-up and login, with sanitized database queries.</p>
         <p class="role"><b>My role</b>UI/UX and documentation</p>
+        <div class="shots">
+          <a href="images/chainledger-login.png" target="_blank" rel="noopener"><img src="images/chainledger-login.png" alt="ChainLedger login page" loading="lazy"></a>
+          <a href="images/chainledger-dashboard.png" target="_blank" rel="noopener"><img src="images/chainledger-dashboard.png" alt="ChainLedger dashboard" loading="lazy"></a>
+        </div>
         <a class="src" href="https://github.com/zinoiu/ChainLedger1">Source code</a>
       </article>
       <article class="proj">
@@ -251,6 +268,12 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
         <span class="stack">Kotlin, Firebase</span>
         <p>A budgeting and investing app for students that helps them manage their money and learn to invest.</p>
         <p class="role"><b>My role</b>One of the developers</p>
+        <div class="shots">
+          <a href="images/invested-landingpage.png" target="_blank" rel="noopener"><img src="images/invested-landingpage.png" alt="InvestEd landing page" loading="lazy"></a>
+          <a href="images/invested-home.png" target="_blank" rel="noopener"><img src="images/invested-home.png" alt="InvestEd home screen" loading="lazy"></a>
+          <a href="images/invested-rewards.png" target="_blank" rel="noopener"><img src="images/invested-rewards.png" alt="InvestEd rewards screen" loading="lazy"></a>
+          <a href="images/invested-profile.png" target="_blank" rel="noopener"><img src="images/invested-profile.png" alt="InvestEd profile screen" loading="lazy"></a>
+        </div>
         <a class="src" href="https://github.com/zinoiu/InvestEd0">Source code</a>
       </article>
       <article class="proj">
@@ -258,6 +281,11 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
         <span class="stack">Java Swing</span>
         <p>A Tic-Tac-Toe-inspired game that trains planning and pattern spotting. Play a friend or a computer opponent at three difficulty levels, and each player keeps only their three latest marks.</p>
         <p class="role"><b>My role</b>Documentation</p>
+        <div class="shots">
+          <a href="images/rov-mode.png" target="_blank" rel="noopener"><img src="images/rov-mode.png" alt="Rows of Victory mode select" loading="lazy"></a>
+          <a href="images/rov-difficulty.png" target="_blank" rel="noopener"><img src="images/rov-difficulty.png" alt="Rows of Victory difficulty select" loading="lazy"></a>
+          <a href="images/rov-gameplay.png" target="_blank" rel="noopener"><img src="images/rov-gameplay.png" alt="Rows of Victory gameplay" loading="lazy"></a>
+        </div>
         <a class="src" href="https://github.com/zinoiu/RowsOfVictory">Source code</a>
       </article>
     </div>
@@ -268,6 +296,9 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
         <span class="stack">Python, customtkinter</span>
         <p>A desktop app that translates typed or spoken text between languages, for travel, practice, or chatting across languages.</p>
         <p class="role"><b>My role</b>Documentation</p>
+        <div class="shots one">
+          <a href="images/translatego.png" target="_blank" rel="noopener"><img src="images/translatego.png" alt="Translate Go app window" loading="lazy"></a>
+        </div>
         <a class="src" href="https://github.com/zinoiu/Python-Project">Source code</a>
       </article>
       <article class="proj">
@@ -275,6 +306,9 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
         <span class="stack">HTML, CSS, JavaScript</span>
         <p>An art gallery site about famous painters, with 15 searchable artworks and a pop-up of details for each one.</p>
         <p class="role"><b>My role</b>Documentation</p>
+        <div class="shots one">
+          <a href="images/elemental-elegance.png" target="_blank" rel="noopener"><img src="images/elemental-elegance.png" alt="Elemental Elegance art gallery" loading="lazy"></a>
+        </div>
         <a class="src" href="https://github.com/zinoiu/Elemental-Elegance">Source code</a>
       </article>
     </div>
@@ -579,5 +613,4 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
 })();
 </script>
 </body>
-</html>
 </html>
