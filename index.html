@@ -159,9 +159,20 @@ a.cert:hover{border-color:var(--accent)}
 /* Project screenshots */
 .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0 6px}
 .shots.one{grid-template-columns:minmax(0,480px)}
-.shots.full{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start}
-.shots.full img{aspect-ratio:auto;height:auto;object-fit:contain}
 .shots .game{max-width:none}
+/* Rows of Victory: two screenshots stacked, same height as the Tic-Tac-Toe card */
+.shots.rov{grid-template-columns:repeat(2,minmax(0,300px));align-items:stretch;justify-content:start}
+.shots.rov .stack{position:relative;min-height:0}
+.shots.rov .stack-in{position:absolute;inset:0;display:flex;flex-direction:column;gap:12px}
+.shots.rov .stack-in a{flex:1 1 0;min-height:0}
+.shots.rov .stack-in img{height:100%;aspect-ratio:auto;object-fit:contain}
+@media(max-width:640px){
+  .shots.rov{grid-template-columns:minmax(0,1fr)}
+  .shots.rov .stack{position:static}
+  .shots.rov .stack-in{position:static}
+  .shots.rov .stack-in a{flex:none}
+  .shots.rov .stack-in img{height:auto}
+}
 .shots a{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card)}
 .shots img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top;transition:transform .25s ease}
 .shots a:hover img{transform:scale(1.03)}
@@ -284,9 +295,11 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
         <span class="stack">Java Swing</span>
         <p>A Tic-Tac-Toe-inspired game that trains planning and pattern spotting. Play a friend or a computer opponent at three difficulty levels, and each player keeps only their three latest marks.</p>
         <p class="role"><b>My role</b>Documentation</p>
-        <div class="shots full">
-          <a href="images/rov-mode.png" target="_blank" rel="noopener"><img src="images/rov-mode.png" alt="Rows of Victory mode select" loading="lazy"></a>
-          <a href="images/rov-difficulty.png" target="_blank" rel="noopener"><img src="images/rov-difficulty.png" alt="Rows of Victory difficulty select" loading="lazy"></a>
+        <div class="shots rov">
+          <div class="stack"><div class="stack-in">
+            <a href="images/rov-mode.png" target="_blank" rel="noopener"><img src="images/rov-mode.png" alt="Rows of Victory mode select" loading="lazy"></a>
+            <a href="images/rov-difficulty.png" target="_blank" rel="noopener"><img src="images/rov-difficulty.png" alt="Rows of Victory difficulty select" loading="lazy"></a>
+          </div></div>
           <div class="game" aria-label="Tic-Tac-Toe, playable">
             <p id="status">X’s turn</p>
             <div class="board" id="board"></div>
