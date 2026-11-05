@@ -160,6 +160,10 @@ a.cert:hover{border-color:var(--accent)}
 .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0 6px}
 .shots.one{grid-template-columns:minmax(0,480px)}
 .shots .game{max-width:none}
+/* InvestEd: phone-style screenshots, all the same height */
+.shots.phones{display:flex;gap:12px;align-items:flex-start;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:6px}
+.shots.phones a{flex:none;scroll-snap-align:start}
+.shots.phones img{height:clamp(280px,40vw,460px);width:auto;max-width:none;aspect-ratio:auto;object-fit:contain}
 /* Rows of Victory: two screenshots stacked, same height as the Tic-Tac-Toe card */
 .shots.rov{grid-template-columns:repeat(2,minmax(0,300px));align-items:stretch;justify-content:start}
 .shots.rov .stack{position:relative;min-height:0}
@@ -282,7 +286,7 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
         <span class="stack">Kotlin, Firebase</span>
         <p>A budgeting and investing app for students that helps them manage their money and learn to invest.</p>
         <p class="role"><b>My role</b>One of the developers</p>
-        <div class="shots">
+        <div class="shots phones">
           <a href="images/invested-landingpage.png" target="_blank" rel="noopener"><img src="images/invested-landingpage.png" alt="InvestEd landing page" loading="lazy"></a>
           <a href="images/invested-home.jpg" target="_blank" rel="noopener"><img src="images/invested-home.jpg" alt="InvestEd home screen" loading="lazy"></a>
           <a href="images/invested-rewards.jpg" target="_blank" rel="noopener"><img src="images/invested-rewards.jpg" alt="InvestEd rewards screen" loading="lazy"></a>
