@@ -159,11 +159,13 @@ a.cert:hover{border-color:var(--accent)}
 /* Project screenshots */
 .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0 6px}
 .shots.one{grid-template-columns:minmax(0,480px)}
+.shots.full{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start}
+.shots.full img{aspect-ratio:auto;height:auto;object-fit:contain}
+.shots .game{max-width:none}
 .shots a{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card)}
 .shots img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top;transition:transform .25s ease}
 .shots a:hover img{transform:scale(1.03)}
 @media(prefers-reduced-motion:reduce){.shots a:hover img{transform:none}}
-  .shots.full img{aspect-ratio:auto;height:auto;object-fit:contain}
 
 .two{display:grid;gap:28px}
 @media(min-width:700px){.two{grid-template-columns:1fr 1fr}}
@@ -282,10 +284,14 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
         <span class="stack">Java Swing</span>
         <p>A Tic-Tac-Toe-inspired game that trains planning and pattern spotting. Play a friend or a computer opponent at three difficulty levels, and each player keeps only their three latest marks.</p>
         <p class="role"><b>My role</b>Documentation</p>
-       <div class="shots full">
+        <div class="shots full">
           <a href="images/rov-mode.png" target="_blank" rel="noopener"><img src="images/rov-mode.png" alt="Rows of Victory mode select" loading="lazy"></a>
           <a href="images/rov-difficulty.png" target="_blank" rel="noopener"><img src="images/rov-difficulty.png" alt="Rows of Victory difficulty select" loading="lazy"></a>
-          <a href="images/rov-gameplay.png" target="_blank" rel="noopener"><img src="images/rov-gameplay.png" alt="Rows of Victory gameplay" loading="lazy"></a>
+          <div class="game" aria-label="Tic-Tac-Toe, playable">
+            <p id="status">X’s turn</p>
+            <div class="board" id="board"></div>
+            <button class="reset" id="reset" type="button">New game</button>
+          </div>
         </div>
         <a class="src" href="https://github.com/zinoiu/RowsOfVictory">Source code</a>
       </article>
@@ -391,15 +397,6 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
       <h3>Currently learning</h3>
       <p>Networking fundamentals, the Linux command line, and hands-on security practice.</p>
     </div>
-  </div>
-</div></section>
-
-<section id="play"><div class="wrap">
-  <h2>Take a break</h2>
-  <div class="game" aria-label="Tic-Tac-Toe">
-    <p id="status">X’s turn</p>
-    <div class="board" id="board"></div>
-    <button class="reset" id="reset" type="button">New game</button>
   </div>
 </div></section>
 
