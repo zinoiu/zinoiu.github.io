@@ -189,6 +189,21 @@ a.cert:hover{border-color:var(--accent)}
 footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:.92rem}
 @media(max-width:560px){nav{gap:12px;font-size:.86rem}.btn{flex:1 1 100%;text-align:center}.textlink{margin-left:0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.proj a img{cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top)) 16px max(16px,env(safe-area-inset-bottom));background:rgba(26,15,45,.82);backdrop-filter:blur(6px);animation:lbIn .2s ease}
+.lb[hidden]{display:none}
+.lb figure{margin:0;max-width:min(1000px,100%);display:flex;flex-direction:column;align-items:center;gap:12px}
+.lb img{max-width:100%;max-height:78vh;border-radius:12px;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.4);object-fit:contain}
+.lb figcaption{color:#efe6ff;font:400 .8rem var(--mono);letter-spacing:.06em;text-align:center}
+.lb-x,.lb-nav{position:absolute;display:grid;place-items:center;width:44px;height:44px;border:1px solid rgba(255,255,255,.25);border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font:400 1.6rem/1 var(--body);cursor:pointer}
+.lb-x{top:max(14px,env(safe-area-inset-top));right:14px}
+.lb-nav{top:50%;margin-top:-22px}
+.lb-prev{left:14px}.lb-next{right:14px}
+.lb.single .lb-nav{display:none}
+.lb-x:hover,.lb-nav:hover{background:var(--accent);color:var(--accent-ink)}
+@keyframes lbIn{from{opacity:0}}
+@media(prefers-reduced-motion:reduce){.lb{animation:none}}
+
 </style>
 </head>
 <body>
@@ -206,11 +221,12 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
     <dl class="stats">
       <div><dt>6</dt><dd>Projects<br>built</dd></div>
       <div><dt>15</dt><dd>Certificates<br>earned</dd></div>
-      <div><dt>6</dt><dd>Group<br>projects</dd></div>
+   <div><dt>3</dt><dd>Fortinet<br>NSE certs</dd></div>
+
     </dl>
     <div class="btns">
       <a class="btn primary" href="mailto:romanillos.einjhel@gmail.com">Get in touch ↗</a>
-      <a class="textlink" href="cv.pdf" download>Download CV ↓</a>
+      <a class="textlink" href="CV_ROMANILLOS.pdf" download>Download CV ↓</a>
     </div>
   </div>
 
@@ -627,5 +643,55 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:28px 0 40px;colo
   r.onclick=reset;reset();
 })();
 </script>
+  
+
+<script>
+/* Screenshot popup */
+(function(){
+  var imgRe=/\.(jpe?g|png|webp|gif|avif)(\?.*)?$/i;
+  var box=document.createElement('div');
+  box.className='lb';box.hidden=true;
+  box.setAttribute('role','dialog');box.setAttribute('aria-modal','true');box.setAttribute('aria-label','Image preview');
+  box.innerHTML='<button class="lb-x" type="button" aria-label="Close">×</button><button class="lb-nav lb-prev" type="button" aria-label="Previous image">‹</button><figure><img alt=""><figcaption></figcaption></figure><button class="lb-nav lb-next" type="button" aria-label="Next image">›</button>';
+  document.body.appendChild(box);
+  var im=box.querySelector('img'),cap=box.querySelector('figcaption'),set=[],i=0,opener=null;
+  function show(n){
+    i=(n+set.length)%set.length;
+    var a=set[i],t=a.querySelector('img'),alt=t?t.alt:'';
+    im.src=a.href;im.alt=alt;
+    cap.textContent=alt+(set.length>1?'  ('+(i+1)+'/'+set.length+')':'');
+    box.classList.toggle('single',set.length<2);
+  }
+  function open(a){
+    opener=a;
+    var scope=a.closest('.proj')||a.parentElement;
+    set=[].slice.call(scope.querySelectorAll('a[href]')).filter(function(x){return imgRe.test(x.getAttribute('href')||'')&&x.querySelector('img');});
+    box.hidden=false;
+    document.documentElement.style.overflow='hidden';
+    show(set.indexOf(a));
+    box.querySelector('.lb-x').focus();
+  }
+  function close(){
+    box.hidden=true;im.src='';
+    document.documentElement.style.overflow='';
+    if(opener)opener.focus();
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href]');
+    if(a&&a.querySelector('img')&&imgRe.test(a.getAttribute('href')||'')&&!box.contains(a)){e.preventDefault();open(a);return;}
+    if(box.hidden)return;
+    if(e.target===box||e.target.closest('.lb-x'))close();
+    else if(e.target.closest('.lb-prev'))show(i-1);
+    else if(e.target.closest('.lb-next'))show(i+1);
+  });
+  document.addEventListener('keydown',function(e){
+    if(box.hidden)return;
+    if(e.key==='Escape')close();
+    else if(e.key==='ArrowLeft')show(i-1);
+    else if(e.key==='ArrowRight')show(i+1);
+  });
+})();
+</script>
+
 </body>
 </html>
